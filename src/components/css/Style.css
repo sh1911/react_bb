@@ -1,0 +1,25 @@
+.arrow {
+    width : 0;
+    height : 0;
+    float : right;
+    margin-top : 5px;
+    border-left : 5px solid transparent;
+    border-right : 5px solid transparent;
+    display : inline-block;
+}
+
+.arrow-up {
+    border-bottom : 10px solid white;
+}
+
+.arrow-down {
+    border-top : 10px solid white;
+}
+.scrollable{
+    overflow: scroll !important;
+  }
+  .jav{
+    margin-top: 0 !important;
+    margin-bottom: 50px !important;
+    border: 0 !important;
+    }
