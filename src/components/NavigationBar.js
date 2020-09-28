@@ -16,18 +16,18 @@ class NavigationBar extends React.Component{
 						width={ 30}
 					/>
 					<Nav className="mr-auto">
-					<Link to={"home"} className="navbar-brand">BloodBrother</Link>	
-					<Link to={"add"} className="nav-link">Donars List</Link>
-					<Link to={"list"} className="nav-link">Donate Blood</Link>
+					<Link to={"/home"} className="navbar-brand">BloodBrother</Link>	
+					<Link to={"/add"} className="nav-link">Donars List</Link>
+					<Link to={"/list"} className="nav-link">Donate Blood</Link>
 					</Nav>
 					<Navbar sticky="bottom" >
 					<Nav className="mr-auto">
-					<Nav.Link href="/userslist">Admin</Nav.Link>
-					<Nav.Link href="register">Register</Nav.Link>
+					<Nav.Link href="/admin/userslist">Admin</Nav.Link>
+					<Nav.Link href="/register">Register</Nav.Link>
 					<DropdownButton id="dropdown-basic-button" title=" Account">
-					  <Dropdown.Item href="Account">Your Account</Dropdown.Item>
-					  <Dropdown.Item href="login">login</Dropdown.Item>
-					  <Dropdown.Item href="logout">logout</Dropdown.Item>
+					  <Dropdown.Item href="/Account">Your Account</Dropdown.Item>
+					  <Dropdown.Item href="/login">login</Dropdown.Item>
+					  <Dropdown.Item href="/logout">logout</Dropdown.Item>
 					  
 					</DropdownButton>
 

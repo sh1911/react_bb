@@ -10,10 +10,10 @@ export default class TabBar extends Component{
             <div className="border border-light bg-light text-black mr-auto">
             <Nav variant="tabs" >
                 <Nav.Item>
-                <Nav.Link href="userslist"> Users </Nav.Link>
+                <Nav.Link href="/admin/userslist"> Users </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                <Nav.Link href="donarslist"> Donars </Nav.Link>
+                <Nav.Link href="/admin/donarslist"> Donars </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                 </Nav.Item>

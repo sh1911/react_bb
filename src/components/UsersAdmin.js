@@ -25,6 +25,7 @@ export default class DonarList extends Component{
         }
         this.searchData=this.searchData.bind(this);
         this.onChange=this.onChange.bind(this);
+      
         }
     componentDidMount(){
         
@@ -158,6 +159,41 @@ export default class DonarList extends Component{
             this.state.sortDir === "asc" ? this.setState({sortDir: "desc"}) : this.setState({sortDir: "asc"});
             this.findAllUsers(this.state.currentPage);
     };
+    deleteUser = (userId) => {
+        const url="http://localhost:8088";
+        const endPoint="/admin/users/"+userId;
+        const token=`Bearer ${localStorage.getItem("jwttoken")}`;
+        const URL=url+endPoint;
+        
+        axios({
+            method:'delete',
+            url:`${URL}`,
+            headers: { 'Content-Type': 'application/json',Authorization: `${token}`}
+        })
+        .then(response => {
+            console.log(response)
+            this.setState({
+                successMessage:response.data,
+                users:this.state.users.filter(user => user.id != userId)
+                })
+               
+
+        })
+        .catch(err =>{
+            if(err.response!=null)
+            {
+            this.setState({
+                errorMessage:err.response.data})
+            }
+            else
+            {
+                this.setState({
+                    errorMessage:err.message})
+            }
+        });
+
+    };
+    
     render()
     {
         if(this.state.errorMessage=="403")
@@ -171,6 +207,9 @@ export default class DonarList extends Component{
         {
             const {users ,currentPage,totalPages,totalElements}=this.state;        
             return ( <div>
+                 {this.props.location.state!=null?<AlertToast message={this.props.location.state.mssg} show={true} hmessage={"success"} type={this.props.location.type}/>:null}
+          
+                   {this.state.successMessage!=null?<AlertToast message={this.state.successMessage} hmessage={"success"} show={true} type={"success"}/> :null }
                 {this.state.errorMessage!=null?<AlertToast message={this.state.errorMessage} hmessage={"error"} show={true} type={"danger"}/> :null }
                 <TabBar></TabBar>
              <Card className={"border border-light bg-light text-black"}>
@@ -218,7 +257,7 @@ export default class DonarList extends Component{
                                         <ButtonGroup>
                                                 <Link to={"edit/"+user.id} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon={faEdit} /></Link>
                                                 {'   '}
-                                                <Button size="sm" variant="outline-danger" onClick={""}><FontAwesomeIcon icon={faTrash} /></Button>
+                                                <Button size="sm" variant="outline-danger" onClick={this.deleteUser.bind(this,user.id)}>{"  "}<FontAwesomeIcon icon={faTrash} /></Button>
                                         </ButtonGroup>
                                     </tr>                                                                                                           
                                     )

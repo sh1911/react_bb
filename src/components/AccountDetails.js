@@ -122,6 +122,7 @@ export default class AccountDetails extends React.Component{
         }
 		return( 
         <div className="form-group col-7 mx-auto">
+        {this.state.successMessage!=null?<AlertToast message={this.state.successMessage} hmessage={"success"} show={true} type={"success"}/> :null }
         {this.state.errorMessage.length>0?<AlertToast message={this.state.errorMessage} hmessage={"error"} show={true} type={"danger"}/> :null }
         <Card className="center">
         <Card.Header>Account Details</Card.Header>

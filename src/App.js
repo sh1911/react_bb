@@ -65,9 +65,10 @@ function App() {
         <Col lg={12} >
           <Switch>
           
-            <Route path="/userslist" exact component={UsersAdmin}/>
+            <Route path="/admin/edit/:id" exact component={Register}/>
+            <Route path="/admin/userslist" exact component={UsersAdmin}/>
           
-            <Route path="/donarslist" exact component={DonarsAdmin}/>
+            <Route path="/admin/donarslist" exact component={DonarsAdmin}/>
             
           </Switch>
         </Col>
